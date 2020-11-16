@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-
+//содадим саму модель и схему для неё, требования по валидации полей
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        trim: true
+        unique: true
     },
     password: {
         type: String,
@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     }
-},{
-    timestamp:true
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('Users', userSchema)
